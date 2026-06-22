@@ -151,8 +151,8 @@ export async function POST(req: NextRequest) {
 
     const handle = await workflowExecutorTask.trigger({
       runId: run.id,
-      nodes,
-      edges,
+      nodes: nodes as any,
+      edges: edges as any,
     });
 
     await prisma.workflowRun.update({
