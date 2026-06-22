@@ -9,6 +9,7 @@ export default defineConfig({
     extensions: [
       prismaExtension({
         schema: "prisma/schema.prisma",
+        mode: "legacy",
       }),
     ],
     external: ["@prisma/client"],
