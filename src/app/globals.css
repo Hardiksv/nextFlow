@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Core architectural resets to force full viewport heights */
+html, body, #__next, [data-reactroot] {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc; /* light grey baseline background */
+}
+
+/* Ensure ReactFlow container wrapper takes up 100% of available space */
+.react-flow {
+  width: 100% !important;
+  height: 100% !important;
+}

@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "id": "node-request",
+      "type": "requestInputs",
+      "position": { "x": 50, "y": 200 },
+      "data": {
+        "text_field": "Product: Wireless Bluetooth Headphones. Features: Noise cancellation, 30-hour battery, foldable design.",
+        "image_field": "https://placeholder.com/headphones.jpg"
+      },
+      "deletable": false
+    },
+    {
+      "id": "node-cropA",
+      "type": "cropImage",
+      "position": { "x": 350, "y": 50 },
+      "data": { "x": 10, "y": 10, "w": 80, "h": 80 }
+    },
+    {
+      "id": "node-cropB",
+      "type": "cropImage",
+      "position": { "x": 350, "y": 350 },
+      "data": { "x": 0, "y": 0, "w": 100, "h": 100 }
+    },
+    {
+      "id": "node-geminiA",
+      "type": "geminiPro",
+      "position": { "x": 650, "y": 30 },
+      "data": {
+        "prompt": "Analyze this product image and describe the key visual features.",
+        "systemPrompt": "You are a product analyst."
+      }
+    },
+    {
+      "id": "node-geminiB",
+      "type": "geminiPro",
+      "position": { "x": 650, "y": 330 },
+      "data": {
+        "prompt": "Describe the product packaging and branding from this image.",
+        "systemPrompt": "You are a branding expert."
+      }
+    },
+    {
+      "id": "node-geminiC",
+      "type": "geminiPro",
+      "position": { "x": 950, "y": 180 },
+      "data": {
+        "prompt": "Consolidate the two analyses above into a final product marketing brief.",
+        "systemPrompt": "You are a senior marketing strategist."
+      }
+    },
+    {
+      "id": "node-response",
+      "type": "responseOut",
+      "position": { "x": 1250, "y": 210 },
+      "data": { "result": "" },
+      "deletable": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-req-cropA",
+      "source": "node-request",
+      "target": "node-cropA",
+      "sourceHandle": "image_field",
+      "targetHandle": "input_image",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    },
+    {
+      "id": "edge-req-cropB",
+      "source": "node-request",
+      "target": "node-cropB",
+      "sourceHandle": "image_field",
+      "targetHandle": "input_image",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    },
+    {
+      "id": "edge-req-gemA",
+      "source": "node-request",
+      "target": "node-geminiA",
+      "sourceHandle": "text_field",
+      "targetHandle": "prompt",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    },
+    {
+      "id": "edge-req-gemB",
+      "source": "node-request",
+      "target": "node-geminiB",
+      "sourceHandle": "text_field",
+      "targetHandle": "prompt",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    },
+    {
+      "id": "edge-cropA-gemA",
+      "source": "node-cropA",
+      "target": "node-geminiA",
+      "sourceHandle": "output_image",
+      "targetHandle": "imageVision",
+      "animated": true,
+      "style": { "stroke": "#3b82f6" }
+    },
+    {
+      "id": "edge-cropB-gemB",
+      "source": "node-cropB",
+      "target": "node-geminiB",
+      "sourceHandle": "output_image",
+      "targetHandle": "imageVision",
+      "animated": true,
+      "style": { "stroke": "#3b82f6" }
+    },
+    {
+      "id": "edge-gemA-gemC",
+      "source": "node-geminiA",
+      "target": "node-geminiC",
+      "sourceHandle": "response",
+      "targetHandle": "prompt",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    },
+    {
+      "id": "edge-gemB-gemC",
+      "source": "node-geminiB",
+      "target": "node-geminiC",
+      "sourceHandle": "response",
+      "targetHandle": "systemPrompt",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    },
+    {
+      "id": "edge-gemC-resp",
+      "source": "node-geminiC",
+      "target": "node-response",
+      "sourceHandle": "response",
+      "targetHandle": "result",
+      "animated": true,
+      "style": { "stroke": "#a855f7" }
+    }
+  ]
+}

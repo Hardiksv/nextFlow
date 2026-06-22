@@ -1,0 +1,46 @@
+{
+  "configPath": "C:\\Users\\hardi\\Desktop\\nextflow\\.trigger\\tmp\\build-SunEoY\\Desktop\\nextflow\\trigger.config.mjs",
+  "customConditions": [
+  ],
+  "prompts": [
+  ],
+  "queues": [
+  ],
+  "runtime": "node",
+  "runtimeVersion": "22.16.0",
+  "tasks": [
+    {
+      "entryPoint": "C:\\Users\\hardi\\Desktop\\nextflow\\.trigger\\tmp\\build-SunEoY\\Desktop\\nextflow\\src\\trigger\\workflowsExecutor.mjs",
+      "filePath": "src/trigger/workflowsExecutor.ts",
+      "id": "crop-image-task",
+      "maxDuration": 300
+    },
+    {
+      "entryPoint": "C:\\Users\\hardi\\Desktop\\nextflow\\.trigger\\tmp\\build-SunEoY\\Desktop\\nextflow\\src\\trigger\\workflowsExecutor.mjs",
+      "filePath": "src/trigger/workflowsExecutor.ts",
+      "id": "gemini-execution-task",
+      "maxDuration": 300,
+      "queue": {
+        "concurrencyLimit": 1
+      },
+      "retry": {
+        "factor": 2,
+        "maxAttempts": 5,
+        "maxTimeoutInMs": 30000,
+        "minTimeoutInMs": 2000,
+        "randomize": true
+      }
+    },
+    {
+      "entryPoint": "C:\\Users\\hardi\\Desktop\\nextflow\\.trigger\\tmp\\build-SunEoY\\Desktop\\nextflow\\src\\trigger\\workflowsExecutor.mjs",
+      "filePath": "src/trigger/workflowsExecutor.ts",
+      "id": "workflow-executor-task",
+      "maxDuration": 300
+    }
+  ],
+  "timings": {
+    "src/trigger/imageCrop.ts": 1.4861000000000217,
+    "src/trigger/workflowsExecutor.ts": 32.497000000000014
+  },
+  "workerEntryPoint": "C:\\Users\\hardi\\Desktop\\nextflow\\.trigger\\tmp\\build-SunEoY\\AppData\\Local\\npm-cache\\_npx\\f51a09bd0abf5f10\\node_modules\\trigger.dev\\dist\\esm\\entryPoints\\dev-run-worker.mjs"
+}

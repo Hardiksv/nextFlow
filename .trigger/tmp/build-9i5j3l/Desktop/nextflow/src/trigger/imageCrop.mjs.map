@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../../../src/trigger/imageCrop.ts"],
+  "sourcesContent": ["// This file is deprecated. Crop image execution is now handled by\n// cropImageTask in workflowsExecutor.ts via Trigger.dev.\n// Kept for reference only."],
+  "mappings": ";;;;;AAAA;",
+  "names": []
+}
